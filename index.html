@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hossam Saied | Photographer & Reels Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        body { background: #0a0a0a; color: #fff; overflow-x: hidden; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px; width: 65px; height: 65px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; text-decoration: none; box-shadow: 0 10px 40px rgba(37, 211, 102, 0.5);
+            z-index: 999; animation: bounce 2s infinite; transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 20px 40px;
+            background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(10px); z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+            background: linear-gradient(135deg, #d4af37 0%, #fff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s ease; font-size: 0.95rem; }
+        .nav-links a:hover { color: #d4af37; }
+        @media (max-width: 768px) { .nav-links { display: none; } .navbar { padding: 15px 20px; } }
+
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 120px 20px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            top: -150px; right: -150px; border-radius: 50%; animation: float 6s ease-in-out infinite;
+        }
+        .hero::after {
+            content: ''; position: absolute; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(100, 149, 237, 0.1) 0%, transparent 70%);
+            bottom: -150px; left: -150px; border-radius: 50%; animation: float 8s ease-in-out infinite reverse;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.1); } }
+
+        .hero-content { position: relative; z-index: 2; animation: fadeInUp 1s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero-badge {
+            display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #d4af37; padding: 8px 25px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 30px; letter-spacing: 1px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 900;
+            background: linear-gradient(135deg, #d4af37 0%, #fff 50%, #d4af37 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; letter-spacing: 3px;
+        }
+        .hero .subtitle { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #b8b8b8; margin-bottom: 15px; font-weight: 300; }
+        .hero .tagline { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #d4af37; margin-bottom: 40px; font-weight: 600; }
+
+        .cta-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn {
+            padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem;
+            transition: all 0.3s ease; display: inline-block; cursor: pointer; border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #0a0a0a; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+        .btn-secondary { background: transparent; color: #fff; border: 2px solid #fff; }
+        .btn-secondary:hover { background: #fff; color: #0a0a0a; transform: translateY(-3px); }
+
+        .section { padding: 100px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title {
+            text-align: center; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #fff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .section-subtitle { text-align: center; color: #b8b8b8; font-size: 1.15rem; margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .about-section { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); padding: 100px 20px; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 25px;
+            background: linear-gradient(135deg, #d4af37 0%, #fff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .about-text p { color: #b8b8b8; line-height: 2; font-size: 1.1rem; margin-bottom: 20px; }
+        .about-features { list-style: none; margin-top: 30px; }
+        .about-features li { padding: 12px 0; color: #fff; display: flex; align-items: center; gap: 15px; font-size: 1.05rem; }
+        .about-features li::before {
+            content: '✓'; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #0a0a0a;
+            width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0;
+        }
+        .about-visual {
+            position: relative; height: 500px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(212, 175, 55, 0.2); overflow: hidden;
+        }
+        .about-visual::before { content: '📷'; font-size: 10rem; opacity: 0.3; }
+        @media (max-width: 768px) { .about-container { grid-template-columns: 1fr; } .about-visual { height: 300px; } }
+
+        .stats-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 80px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
+        .stat-item { padding: 20px; }
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; font-family: 'Playfair Display', serif;
+        }
+        .stat-label { color: #b8b8b8; font-size: 1.1rem; font-weight: 600; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 40px 30px; border-radius: 20px;
+            text-align: center; transition: all 0.4s ease; border: 1px solid rgba(212, 175, 55, 0.1); position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%); opacity: 0; transition: opacity 0.4s ease;
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2); }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #d4af37; position: relative; z-index: 1; }
+        .service-card p { color: #b8b8b8; line-height: 1.8; position: relative; z-index: 1; }
+
+        .why-section { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); padding: 100px 20px; }
+        .why-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .why-card {
+            background: rgba(26, 26, 46, 0.5); padding: 35px 25px; border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.15); transition: all 0.3s ease;
+        }
+        .why-card:hover { border-color: rgba(212, 175, 55, 0.5); transform: translateY(-5px); }
+        .why-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: rgba(212, 175, 55, 0.3); margin-bottom: 15px; }
+        .why-card h3 { color: #d4af37; font-size: 1.3rem; margin-bottom: 12px; }
+        .why-card p { color: #b8b8b8; line-height: 1.8; }
+
+        .process-section { padding: 100px 20px; background: #0a0a0a; }
+        .process-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; position: relative; }
+        .process-step { text-align: center; padding: 30px 20px; position: relative; }
+        .process-circle {
+            width: 80px; height: 80px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+            font-size: 2rem; color: #0a0a0a; font-weight: 900; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        .process-step h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .process-step p { color: #b8b8b8; line-height: 1.7; }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .portfolio-item {
+            position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 9/16;
+            background: #1a1a2e; transition: transform 0.4s ease; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .portfolio-item:hover { transform: scale(1.03); border-color: rgba(212, 175, 55, 0.5); }
+        .portfolio-item video, .portfolio-item iframe { width: 100%; height: 100%; object-fit: cover; border: none; }
+        .portfolio-placeholder {
+            width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #d4af37; font-size: 3rem;
+        }
+        .portfolio-placeholder span { font-size: 1rem; color: #b8b8b8; margin-top: 10px; }
+        .portfolio-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%); color: #fff;
+        }
+        .portfolio-overlay h4 { font-size: 1.2rem; margin-bottom: 6px; color: #d4af37; }
+        .portfolio-overlay p { color: #b8b8b8; font-size: 0.9rem; }
+
+        .testimonials-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 100px 20px; }
+        .testimonials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card {
+            background: rgba(10, 10, 10, 0.6); padding: 35px 30px; border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2); position: relative; transition: all 0.3s ease;
+        }
+        .testimonial-card:hover { border-color: rgba(212, 175, 55, 0.5); transform: translateY(-5px); }
+        .testimonial-quote { font-size: 4rem; color: rgba(212, 175, 55, 0.3); position: absolute; top: 10px; right: 20px; font-family: 'Playfair Display', serif; }
+        .testimonial-text { color: #fff; line-height: 1.9; font-size: 1.05rem; margin-bottom: 25px; position: relative; z-index: 1; }
+        .testimonial-author { display: flex; align-items: center; gap: 15px; }
+        .author-avatar {
+            width: 50px; height: 50px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0a0a0a; font-weight: 900; font-size: 1.3rem;
+        }
+        .author-info h4 { color: #d4af37; font-size: 1.1rem; margin-bottom: 3px; }
+        .author-info p { color: #b8b8b8; font-size: 0.9rem; }
+        .stars { color: #d4af37; margin-bottom: 15px; font-size: 1.2rem; }
+
+        .faq-section { padding: 100px 20px; background: #0a0a0a; }
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        .faq-item {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 15px; margin-bottom: 15px; overflow: hidden; transition: all 0.3s ease;
+        }
+        .faq-item:hover { border-color: rgba(212, 175, 55, 0.4); }
+        .faq-question {
+            padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; font-weight: 600; font-size: 1.1rem; color: #fff;
+        }
+        .faq-question::after { content: '+'; color: #d4af37; font-size: 1.8rem; font-weight: 300; transition: transform 0.3s ease; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease;
+            color: #b8b8b8; line-height: 1.8; padding: 0 25px;
+        }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 25px 20px; }
+
+        .offer-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 80px 20px; text-align: center;
+            border-top: 2px solid rgba(212, 175, 55, 0.3); border-bottom: 2px solid rgba(212, 175, 55, 0.3); position: relative; overflow: hidden;
+        }
+        .offer-badge {
+            display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0a0a0a; padding: 10px 30px; border-radius: 50px; font-weight: 700; margin-bottom: 30px; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .offer-section h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 20px; color: #fff; }
+        .offer-section p { font-size: 1.2rem; color: #b8b8b8; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .contact-section { text-align: center; padding: 100px 20px; }
+        .whatsapp-btn {
+            display: inline-flex; align-items: center; gap: 15px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #fff; padding: 20px 50px;
+            border-radius: 50px; font-size: 1.3rem; font-weight: 700; text-decoration: none;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4); transition: all 0.3s ease;
+        }
+        .whatsapp-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 50px rgba(37, 211, 102, 0.6); }
+        .whatsapp-icon { font-size: 1.8rem; }
+        .phone-number { margin-top: 20px; color: #b8b8b8; font-size: 1.1rem; }
+
+        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        footer p { color: #666; margin-bottom: 10px; }
+        footer .brand { color: #d4af37; font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 15px; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .whatsapp-float { width: 55px; height: 55px; font-size: 1.5rem; bottom: 20px; left: 20px; }
+        }
+        @media (max-width: 480px) { .portfolio-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/201070299044" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">💬</a>
+
+    <nav class="navbar">
+        <div class="logo">HOSSAM SAIED</div>
+        <ul class="nav-links">
+            <li><a href="#about">عني</a></li>
+            <li><a href="#services">خدماتي</a></li>
+            <li><a href="#portfolio">أعمالي</a></li>
+            <li><a href="#testimonials">آراء العملاء</a></li>
+            <li><a href="#contact">تواصل</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">✨ Photographer & Reels Creator</span>
+            <h1>HOSSAM SAIED</h1>
+            <p class="subtitle">حسام سعيد | مصور فوتوغرافي وصانع محتوى ريلز احترافي</p>
+            <p class="tagline">📷 تصوير احترافي ✨ ريلز إبداعية تبيع نفسها</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">شوف شغلي</a>
+                <a href="https://wa.me/201070299044" class="btn btn-secondary" target="_blank">تواصل معايا</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>عن حسام سعيد</h2>
+                <p>أنا حسام سعيد، مصور فوتوغرافي وصانع محتوى ريلز متخصص في تحويل الأفكار العادية إلى محتوى بصري استثنائي يلفت الانتباه ويحقق نتائج حقيقية.</p>
+                <p>شغفي إن كل عميل يطلع من عندي بمحتوى يفرق معاه في شغله، سواء كان تصوير منتجات، جلسات شخصية، أو ريلز إبداعية تخطف العين وتبيع المنتج من أول ثانية.</p>
+                <ul class="about-features">
+                    <li>خبرة في تصوير المنتجات والبراندات</li>
+                    <li>صناعة ريلز احترافية بإخراج سينمائي</li>
+                    <li>أفكار إبداعية مميزة لكل عميل</li>
+                    <li>جودة عالية وسرعة في التسليم</li>
+                    <li>أسعار تنافسية تناسب كل الميزانيات</li>
+                </ul>
+            </div>
+            <div class="about-visual"></div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-number">+200</div><div class="stat-label">مشروع مكتمل</div></div>
+            <div class="stat-item"><div class="stat-number">+150</div><div class="stat-label">عميل سعيد</div></div>
+            <div class="stat-item"><div class="stat-number">+500</div><div class="stat-label">ريلز تم إنتاجها</div></div>
+            <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">رضا العملاء</div></div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2 class="section-title">خدماتي</h2>
+        <p class="section-subtitle">كل اللي محتاجه عشان شغلك يبان بأحسن صورة ويفرق معاك</p>
+        <div class="services-grid">
+            <div class="service-card"><span class="service-icon">📸</span><h3>تصوير منتجات</h3><p>تصوير احترافي لمنتجاتك يخليها تبان بأفضل شكل وتزيد مبيعاتك بشكل ملحوظ.</p></div>
+            <div class="service-card"><span class="service-icon">🎬</span><h3>ريلز احترافية</h3><p>صناعة فيديوهات ريلز إبداعية تطلع براندك بشكل عصري وجذاب يبيع نفسه.</p></div>
+            <div class="service-card"><span class="service-icon">👤</span><h3>جلسات شخصية</h3><p>جلسات تصوير شخصية احترافية تظهرك بأفضل صورة سواء للبروفايل أو السوشيال ميديا.</p></div>
+            <div class="service-card"><span class="service-icon">✨</span><h3>محتوى إبداعي</h3><p>أفكار إبداعية ومحتوى مميز يخلي براندك مختلف عن المنافسين وواضح في دماغ العميل.</p></div>
+            <div class="service-card"><span class="service-icon">🎥</span><h3>تصوير مناسبات</h3><p>تغطية احترافية لمناسباتك بأعلى جودة تحفظ لك أجمل اللحظات للأبد.</p></div>
+            <div class="service-card"><span class="service-icon">🎨</span><h3>هوية بصرية</h3><p>محتوى متكامل يخلي براندك له شكل مميز وثابت على كل منصات التواصل.</p></div>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="section-title">ليه تختارني؟</h2>
+        <p class="section-subtitle">أسباب تخليك تثق فيّ وتبدأ معاك شغل يفرق</p>
+        <div class="why-grid">
+            <div class="why-card"><div class="why-number">01</div><h3>جودة لا تُضاهى</h3><p>كل تفصيلة في شغلي مدروسة، من الإضاءة للتكوين للمونتاج النهائي.</p></div>
+            <div class="why-card"><div class="why-number">02</div><h3>أفكار مبتكرة</h3><p>مش بنقلد حد، كل مشروع بفكر فيه بشكل خاص يناسب براندك وجمهورك.</p></div>
+            <div class="why-card"><div class="why-number">03</div><h3>التزام بالمواعيد</h3><p>وقتك غالي، وانا ملتزم أسلمك شغلك في الموعد المتفق عليه بالظبط.</p></div>
+            <div class="why-card"><div class="why-number">04</div><h3>أسعار مناسبة</h3><p>باقات مرنة تناسب كل الميزانيات، مع الحفاظ على أعلى جودة ممكنة.</p></div>
+            <div class="why-card"><div class="why-number">05</div><h3>دعم مستمر</h3><p>مش بس أسلمك الشغل وأمشي، أنا معاك في أي تعديل أو استفسار بعدها.</p></div>
+            <div class="why-card"><div class="why-number">06</div><h3>نتائج حقيقية</h3><p>شغلي مش بس شكل حلو، ده محتوى بيحقق نتائج فعلية في المبيعات والتفاعل.</p></div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <h2 class="section-title">مراحل العمل معي</h2>
+        <p class="section-subtitle">4 خطوات بسيطة من أول فكرة لحد ما تستلم شغلك</p>
+        <div class="process-grid">
+            <div class="process-step"><div class="process-circle">1</div><h3>الاستشارة</h3><p>نتكلم سوا نفهم احتياجاتك وأهدافك من المشروع بالظبط.</p></div>
+            <div class="process-step"><div class="process-circle">2</div><h3>التخطيط</h3><p>أعملك خطة كاملة بالأفكار والمواعيد والتفاصيل قبل ما نبدأ.</p></div>
+            <div class="process-step"><div class="process-circle">3</div><h3>التنفيذ</h3><p>نبدأ التصوير والإنتاج بأعلى جودة وأحدث المعدات والتقنيات.</p></div>
+            <div class="process-step"><div class="process-circle">4</div><h3>التسليم</h3><p>تستلم شغلك جاهز بجودة عالية مع أي تعديلات تحتاجها.</p></div>
+        </div>
+    </section>
+
+    <!-- قسم الأعمال (محدث بـ 14 فيديو) -->
+    <section class="section" id="portfolio">
+        <h2 class="section-title">أعمالي</h2>
+        <p class="section-subtitle">نماذج من شغلي في التصوير والريلز الاحترافية</p>
+        <div class="portfolio-grid">
+            
+            <!-- ✅ الفيديو 1 -->
+            <div class="portfolio-item">
+                <video controls muted loop playsinline>
+                    <source src="https://www.image2url.com/r2/default/videos/1790865955716-1c14dc3a-c80c-4b9f-9764-58696a3ef7ba.mp4" type="video/mp4">
+                </video>
+                <div class="portfolio-overlay">
+                    <h4>إبداع بصري احترافي</h4>
+                    <p>جودة عالية وإخراج سينمائي يبرز تفاصيل الشغل بأفضل صورة</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 2 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac5316a0f5a4f5b881634c5" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>مونتاج ديناميكي جذاب</h4>
+                    <p>إيقاع سريع وانتقالات سلسة تخطف انتباه العميل من الثانية الأولى</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 3 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac530f597838a16f123b742" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>إضاءة وتركيز احترافي</h4>
+                    <p>إبراز جماليات المنتج بدقة عالية ترفع من قيمته المدركة</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 4 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac5320dadc210cc52a92239" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>قصة بصرية متكاملة</h4>
+                    <p>سرد بصري يحول المنتج العادي إلى تجربة لا تُنسى للعميل</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 5 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac5307ec915358353857e95" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>هوية بصرية عصرية</h4>
+                    <p>محتوى مصمم خصيصاً ليتوافق مع تريندات السوشيال ميديا الحالية</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 6 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac536bbbffcb45be3f2c23b" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>تأثيرات بصرية مذهلة</h4>
+                    <p>دمج احترافي للمؤثرات يرفع من قيمة المحتوى البصري ويجعله لا يُنسى</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 7 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac5362f9c5b9c740f4577a5" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>قصة العلامة التجارية</h4>
+                    <p>سرد بصري يحكي قصة منتجك بطريقة تلامس مشاعر العميل وتدفعه للشراء</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 8 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac53561f30b39cd27051bcf" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>إيقاع سريع وجذاب</h4>
+                    <p>مونتاج ديناميكي مصمم خصيصاً لزيادة التفاعل والمشاهدات على منصات التواصل</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 9 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac5349c949174de02ec182f" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>تفاصيل تصنع الفرق</h4>
+                    <p>لقطات مقربة واحترافية تبرز جودة المنتج بأدق التفاصيل الممكنة</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 10 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac53aa6437eedc31162ff82" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>انتقالات سينمائية</h4>
+                    <p>حركات كاميرا ومونتاج احترافي يمنح الفيديو طابعاً سينمائياً فاخراً</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 11 -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac538dd675528ec8ba26d67" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>تصوير ديناميكي للمنتجات</h4>
+                    <p>زوايا تصوير مبتكرة تبرز جمال المنتج وتجعله محور الانتباه</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 12: جديد -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac53ea1278c17390bdfe7ef" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>إبداع بلا حدود</h4>
+                    <p>لمسات فنية ومونتاج متقن يضمن لك التميز والانتشار</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 13: جديد -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac53dd1579c989f7f5fb8c7" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>جودة تفوق التوقعات</h4>
+                    <p>ألوان دقيقة وتفاصيل حادة تعكس احترافية عالية في كل لقطة</p>
+                </div>
+            </div>
+
+            <!-- ✅ الفيديو 14: جديد -->
+            <div class="portfolio-item">
+                <iframe src="https://www.kapwing.com/e/6ac53ccf0f4af7614a55fc93" allowfullscreen></iframe>
+                <div class="portfolio-overlay">
+                    <h4>سرد بصري مؤثر</h4>
+                    <p>فيديو يحكي قصة علامتك التجارية بأسلوب يجذب العملاء ويحفزهم</p>
+                </div>
+            </div>
+
+            <!-- 📌 الفيديو 15: المكان الأخير (جاهز) -->
+            <div class="portfolio-item">
+                <div class="portfolio-placeholder">
+                    <span>🎬 الفيديو 15</span>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>عمل إبداعي #15</h4>
+                    <p>قريباً</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">آراء العملاء</h2>
+        <p class="section-subtitle">كلام عملائي هو أفضل شهادة على جودة شغلي</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div><div class="stars">★★★★★</div>
+                <p class="testimonial-text">شغل حسام فعلاً مختلف، الريلز اللي عملها لبرندي رفعت المبيعات بشكل ملحوظ. شخص محترف وذوقه عالي جداً.</p>
+                <div class="testimonial-author"><div class="author-avatar">أ</div><div class="author-info"><h4>اسم العميل</h4><p>صاحب براند</p></div></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div><div class="stars">★★★★★</div>
+                <p class="testimonial-text">تعاملت مع مصورين كتير قبل كده، لكن حسام له أسلوب خاص. بيحاول يفهم البراند كويس وبيطلع شغل إبداعي فعلاً.</p>
+                <div class="testimonial-author"><div class="author-avatar">م</div><div class="author-info"><h4>اسم العميل</h4><p>صاحب محل</p></div></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div><div class="stars">★★★★★</div>
+                <p class="testimonial-text">الالتزام بالمواعيد والجودة العالية والأسعار المناسبة، دي حاجة مش هتلاقيها إلا مع حسام. أنصح أي حد يتعامل معاه.</p>
+                <div class="testimonial-author"><div class="author-avatar">س</div><div class="author-info"><h4>اسم العميل</h4><p>صاحب شركة</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">أسئلة شائعة</h2>
+        <p class="section-subtitle">إجابات على أكتر الأسئلة اللي بتوصلني</p>
+        <div class="faq-container">
+            <div class="faq-item"><div class="faq-question">إزاي أحجز جلسة تصوير أو ريلز؟</div><div class="faq-answer">بكل بساطة، كلمني على الواتساب على رقم 01070299044، وهنتفق على كل التفاصيل ونحدد الموعد المناسب ليك.</div></div>
+            <div class="faq-item"><div class="faq-question">كام يوم بتاخد عشان تسلم الشغل؟</div><div class="faq-answer">في العادة من 3 لـ 7 أيام حسب حجم المشروع، لكن دايماً بلتزم بالموعد اللي بنتفق عليه مع العميل.</div></div>
+            <div class="faq-item"><div class="faq-question">هل في تعديلات بعد التسليم؟</div><div class="faq-answer">طبعاً، كل باقة فيها عدد معين من التعديلات المجانية، وهدفنا إنك تطلع راضي 100% عن الشغل النهائي.</div></div>
+            <div class="faq-item"><div class="faq-question">إيه أسعار الباقات؟</div><div class="faq-answer">الأسعار بتختلف حسب نوع الخدمة وحجم المشروع. كلمني على الواتساب وهابعتلك الباقات والأسعار المناسبة ليك.</div></div>
+            <div class="faq-item"><div class="faq-question">هل في خصومات دلوقتي؟</div><div class="faq-answer">أيوه! في خصومات خاصة لفترة محدودة على باقات التصوير والريلز. كلمني دلوقتي عشان تحجز مكانك قبل ما العرض يخلص.</div></div>
+        </div>
+    </section>
+
+    <section class="offer-section">
+        <span class="offer-badge">🔥 عرض خاص لفترة محدودة</span>
+        <h2>خصومات حصرية على باقات التصوير والريلز</h2>
+        <p>استعد لأيام جاية فيها خصومات مميزة على كل خدماتي. احجز مكانك دلوقتي قبل ما السعر يرجع!</p>
+        <a href="https://wa.me/201070299044?text=أهلاً%20حسام،%20عاوز%20أعرف%20أكتر%20عن%20الخصومات%20الجديدة" class="btn btn-primary" target="_blank">احجز مكانك الآن</a>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">تواصل معي</h2>
+        <p class="section-subtitle">جاهز أبدأ معاك شغل يفرق</p>
+        <a href="https://wa.me/201070299044" class="whatsapp-btn" target="_blank">
+            <span class="whatsapp-icon">💬</span><span>كلمني على واتساب</span>
+        </a>
+        <p class="phone-number">📞 01070299044</p>
+    </section>
+
+    <footer>
+        <p class="brand">HOSSAM SAIED</p>
+        <p>Photographer & Reels Creator</p>
+        <p style="margin-top: 15px;">© 2026 جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => { item.classList.toggle('active'); });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.style.background = window.scrollY > 50 ? 'rgba(10, 10, 10, 0.95)' : 'rgba(10, 10, 10, 0.9)';
+        });
+    </script>
+</body>
+</html>
